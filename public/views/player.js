@@ -8,6 +8,7 @@ var url = 'http://localhost:3002/team/';
 btn.addEventListener("click", function() {
   var srch_name = document.getElementById("search").value;
   var request = new XMLHttpRequest();
+
   request.open('GET', url+srch_name, true);
   request.onload = function() {
     var ourData = JSON.parse(request.responseText);
@@ -52,12 +53,30 @@ request.setRequestHeader("Content-Type", "application/json");
     });
 
 
-    // display player on html
-    function renderHTML(data) {
-        var htmlString = "";
+// display player on html
+function renderHTML(data) {
+    var txt = document.createElement('p');
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    var len = data.length;
+    var table = document.getElementById("tbl");
+    var tbody = document.createElement("tbody");
 
-        for (i = 0; i < data.length; i++) {
-          htmlString += "<p>" + data[i].name + "</p>";
-        }
-        playerContainer.insertAdjacentHTML('beforeend', htmlString);
-    };
+    for (var i = 0; i < len; i++) {
+      var plr = data[i];
+      console.log(plr);
+      var tr = document.createElement("tr");
+
+      for (var key in plr) {
+        var detail = plr[key];
+        console.log(detail);
+        var td = document.createElement("td");
+        var txt = document.createTextNode(detail);
+        td.appendChild(txt);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      };
+
+      table.appendChild(tbody);
+  }
+};

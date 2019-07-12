@@ -17,3 +17,20 @@ section {
 footer {
   padding: 10px;
 }
+
+table {
+  border: solid 1px rgb(15, 14, 14);
+  border-collapse: collapse;
+  padding: 2px 3px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+td, th {
+  border: solid 1px rgb(15, 14, 14);
+
+}
